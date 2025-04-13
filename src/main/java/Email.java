@@ -20,7 +20,7 @@ String dname=req.getParameter("dn");//from mail
 String demail=req.getParameter("demail");//from mail
 String date=req.getParameter("ad");//from mail
 String time=req.getParameter("at");//from mail
-String pass="wsfw sxzb lrhg asob";
+String pass="API_KEY";
 pro=new Properties();
 pro.put("mail.smtp.auth","true");
 pro.put("mail.smtp.starttls.enable","true");
@@ -30,13 +30,13 @@ Session ss=Session.getDefaultInstance(pro,new Authenticator()
 {
 protected PasswordAuthentication getPasswordAuthentication()
 {
-return new PasswordAuthentication("nataneshs@gmail.com",pass);
+return new PasswordAuthentication("YOUR_EMAIL",pass);
 }
 });
 try
 {
 mm=new MimeMessage(ss);
-mm.setFrom(new InternetAddress("nataneshs@gmail.com"));
+mm.setFrom(new InternetAddress("YOUR_EMAIL"));
 mm.addRecipient(Message.RecipientType.TO,new InternetAddress(demail));
 mm.setSubject("Appointment Mail");
 mm.setText("Hello Dr."+dname+",i'm "+name+" I want to schedule an appointment with you for consulting\r\n" + //
