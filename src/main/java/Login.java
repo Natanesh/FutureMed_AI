@@ -22,7 +22,7 @@ public class Login implements Filter{
         String pass=""+req.getParameter("pass");
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
-            con=DriverManager.getConnection("jdbc:mysql://localhost:3306/details","username","password");
+            con=DriverManager.getConnection("jdbc:mysql://localhost:3306/details","YOUR_USERNAME","YOUR_PASSWORD");
             st=con.createStatement();
             rs=st.executeQuery("select * from login where email='"+email+"';" );
             int f=0;
