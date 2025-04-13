@@ -24,7 +24,7 @@ public class Signup extends HttpServlet{
         // String cpass=""+req.getParameter("confirm_password");
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
-            con=DriverManager.getConnection("jdbc:mysql://localhost:3306/details","root","nsnatanesh@2005S");
+            con=DriverManager.getConnection("jdbc:mysql://localhost:3306/details","YOUR_USERNAME","YOUR_PASSWORD");
             st=con.createStatement();
             st.executeUpdate("insert into login values('"+user+"','"+phno+"','"+email+"','"+npass+"');" );
             RequestDispatcher rd=req.getRequestDispatcher("accountcreated.html");
