@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI-powered Health Assistant</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(135deg, #0f172a, #1e293b);
+            color: #ffffff;
+        }
+        header {
+            padding: 20px;
+            background: linear-gradient(90deg, #1e40af, #1e3a8a);
+            text-align: center;
+            position: relative;
+        }
+        nav {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+        }
+        nav a {
+            color: white;
+            text-decoration: none;
+            padding: 10px 15px;
+            font-size: 16px;
+            border-radius: 8px;
+            transition: 0.3s;
+        }
+        nav a:hover {
+            background-color: rgba(255, 255, 255, 0.2);
+        }
+        .container {
+            width: 80%;
+            margin: 20px auto;
+            background: #1e293b;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+        }
+        .hero {
+            text-align: center;
+            padding: 40px;
+            background: linear-gradient(135deg, #1e40af, #1e3a8a);
+            border-radius: 12px;
+            margin-bottom: 20px;
+        }
+        .hero h2 {
+            font-size: 28px;
+            margin-bottom: 10px;
+        }
+        .feature-box {
+            padding: 20px;
+            background: #334155;
+            border-radius: 10px;
+            margin-bottom: 15px;
+        }
+        .feature-box h3 {
+            color: #60a5fa;
+        }
+        .cta {
+            text-align: center;
+            margin-top: 20px;
+        }
+        .cta button {
+            background: linear-gradient(90deg, #3b82f6, #2563eb);
+            color: white;
+            padding: 15px 30px;
+            border: none;
+            font-size: 18px;
+            cursor: pointer;
+            border-radius: 8px;
+            transition: 0.3s;
+        }
+        .cta button:hover {
+            background: linear-gradient(90deg, #2563eb, #1e40af);
+        }
+        .footer {
+            text-align: center;
+            background: linear-gradient(90deg, #1e40af, #1e3a8a);
+            padding: 15px;
+            margin-top: 20px;
+        }
+        #logo {
+            display: block;
+            margin: 0 auto 20px;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <svg style="float: left; margin-left:100px " xmlns="http://www.w3.org/2000/svg" width="100" height="100" fill="currentColor" class="bi bi-heart-pulse-fill" viewBox="0 0 16 16">
+            <path d="M1.475 9C2.702 10.84 4.779 12.871 8 15c3.221-2.129 5.298-4.16 6.525-6H12a.5.5 0 0 1-.464-.314l-1.457-3.642-1.598 5.593a.5.5 0 0 1-.945.049L5.889 6.568l-1.473 2.21A.5.5 0 0 1 4 9z"/>
+            <path d="M.88 8C-2.427 1.68 4.41-2 7.823 1.143q.09.083.176.171a3 3 0 0 1 .176-.17C11.59-2 18.426 1.68 15.12 8h-2.783l-1.874-4.686a.5.5 0 0 0-.945.049L7.921 8.956 6.464 5.314a.5.5 0 0 0-.88-.091L3.732 8z"/>
+          </svg>
+        <h1>FutureMed - AI-driven Future of Medical Diagnosis</h1>
+        <nav>
+            <a href="/FutureMed_AI/login.html">Login</a>
+            <a href="/FutureMed_AI/sign_up.html">Sign up</a>
+        </nav>
+    </header>
+    <div class="container">
+        <div class="hero">
+            <h2>Welcome to FutureMed AI – Your AI-powered Health Assistant!</h2>
+            <p>✔️ Accurate disease prediction</p>
+            <p>✔️ Personalized health insights</p>
+            <p>✔️ Doctor scheduling & E-prescriptions</p>
+            <p>✔️ AI chatbot for health guidance</p>
+            <div class="cta">
+                <button onclick="button()">👉 Start Your Health Check Today!</button>
+            </div>
+        </div>
+        <div class="features">
+            <h2>🔹 User Features</h2>
+            <div class="feature-box">
+                <h3>👤 User Profile & Health Data Input</h3>
+                <p>Enter personal details: Name, Age, Height, Weight</p>
+                <p>Provide lifestyle details: Diet, Family history, Activity level</p>
+                <p>Upload medical reports for better predictions</p>
+            </div>
+            <div class="feature-box">
+                <h3>🔍 Disease Prediction & Health Suggestions</h3>
+                <p>AI-powered predictions for diseases like diabetes, heart disease, and cancer</p>
+                <p>Personalized health improvement tips</p>
+                <p>Find top-rated doctors in your location</p>
+            </div>
+        </div>
+        <div class="security">
+            <h2>🔒 Security & Privacy</h2>
+            <div class="feature-box">
+                <h3>🔄 AI-Driven Analysis</h3>
+                <p>Smart algorithms for accurate diagnosis</p>
+            </div>
+        </div>
+        <div class="cta">
+            <button onclick="button()">🚀 Start Your AI Health Journey Today!</button>
+        </div>
+    </div>
+    <div class="footer">
+        &copy; 2025 FutureMed AI. All Rights Reserved.
+    </div>
+</body>
+<script>
+    function button() {
+        window.location.href = '/FutureMed_AI/login.html';
+    }
+</script>
+</html>

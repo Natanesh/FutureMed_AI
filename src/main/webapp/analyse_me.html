@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Health Risk Analysis</title>
+    <style>
+        body {
+            color: white;
+            font-family: Arial, sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(135deg, #0f172a, #1e293b);
+        }
+        form {
+            color: black;
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            width: 500px;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        input {
+            margin-top: 10px;
+            padding: 10px;
+            width: 80%;
+        }
+        button{
+            border-radius: 10px;
+           color: white;
+            border: none;
+            background-color: #007BFF;
+            width: 40%;
+            margin-top: 20px;
+            padding: 10px ;
+        }
+        button:hover{
+            background-color: #004494;
+
+        }
+        .response{
+            overflow: visible; 
+             white-space: nowrap; 
+            margin-left: 10px;
+            display: flex;
+            flex-direction: row;
+            border-radius: 10px;
+            padding: 20px;
+            height: 660px;
+            background-color: rgba(6, 132, 243, 0.336);
+            width: 700px;
+            
+        }
+        a{
+            margin-left: 90px;
+            border-radius: 10px;
+            color: white;
+            text-decoration: none;
+            background-color:#007BFF ;
+            padding: 10px;
+            text-align: center;
+            margin-bottom: 7px;
+        }
+        a:hover{
+            background-color: #004494;
+            
+        }
+        .checkbox-container {
+            margin-left: 36px;
+            display: flex;
+            align-items: center;
+            justify-content: flex-start;
+            width: 20%;
+        }
+        .checkbox-container label {
+            margin-top: 6px;
+            margin-left: 2px;
+        }
+    </style>
+</head>
+<body> 
+    <div style="display: flex;flex-direction: row;">
+   
+    <form id="healthForm">
+        <h1 style="color:  #007bff;"><svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">
+            <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001q.044.06.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1 1 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0"/>
+          </svg> Analyse Me</h1>
+        <input type="text" id="age" placeholder="Enter Age" required><br>
+        <input type="text" id="weight" placeholder="Enter Weight (kg)" required><br>
+        <input type="text" id="height" placeholder="Enter Height (cm)" required><br>
+        <input type="text" id="bloodPressure" placeholder="Blood Pressure (e.g. 120/80)" required><br>
+        <input type="text" id="glucose" placeholder="Glucose Level" required><br>
+        <input type="text" id="parentDiabetes" placeholder="Parents have diabetes? (Yes/No)" required><br><br>
+        <label for="file">Scan Report</label><input type="file"><br>
+        <input type="text" placeholder="Do you have existing diseases(optional)">
+        <div class="checkbox-container">
+            <input type="checkbox" id="med1">
+            <label for="med1">  HeartPatient</label>
+        </div>
+         <input type="text" id="location" placeholder="Enter Your Location" required><br>
+        <button type="submit">Analyse</button>
+        <a href="/FutureMed_AI/chatBot.html">ChatBot</a>
+    </form>
+    <div class="response" id="response"></div><br><br> 
+</div>
+    
+    <script>
+                const API_KEY = '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';
+                const API_URL = 'https://openrouter.ai/api/v1/chat/completions';
+        
+        document.getElementById('healthForm').addEventListener('submit', async function(event) {
+            event.preventDefault();
+            
+            const age = document.getElementById('age').value;
+            const weight = document.getElementById('weight').value;
+            const height = document.getElementById('height').value;
+            const bloodPressure = document.getElementById('bloodPressure').value;
+            const glucose = document.getElementById('glucose').value;
+            const parentDiabetes = document.getElementById('parentDiabetes').value;
+            const location = document.getElementById('location').value;
+            
+            const prompt = `Analyze the health risk based on the following data: Age: ${age}, Weight: ${weight} kg, Height: ${height} cm, Blood Pressure: ${bloodPressure}, Glucose Level: ${glucose}, Parents have diabetes: ${parentDiabetes}. 
+            Predict the risk factor of getting diseases in percentage, provide methods to overcome them, suggest a proper diet plan, and if the person has a high possibility of disease, suggest a highly-rated doctor in ${location}. provide answer in point by point manner and in consise manner,If the user has any doubts, suggest asking the chatbot.`;
+            
+            const responseDiv = document.getElementById('response');
+            responseDiv.innerHTML = 'Processing...';
+            
+            try {
+                const response = await fetch(API_URL, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'Authorization': `Bearer ${API_KEY}`
+                    },
+                    body: JSON.stringify({
+                        model: "anthropic/claude-3-sonnet",
+                        messages: [{ role: "user", content: prompt }],
+                        max_tokens: 500
+                    })
+                });
+                
+                const data = await response.json();
+                responseDiv.innerHTML = `<strong>Health Analysis:</strong><br><br>${data.choices[0].message.content.replace(/\n/g, '<br>')}`;
+            } catch (error) {
+                responseDiv.innerHTML = 'Error fetching AI response.';
+            }
+        });
+    </script>
+</body>
+</html>

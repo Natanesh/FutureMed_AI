@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign Up</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background: linear-gradient(135deg, #0f172a, #1e293b);      }
+        .signup-container {
+            width: 500px;
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+        .signup-container h2 {
+            margin-bottom: 20px;
+        }
+        .signup-container input {
+            width:60%;
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        .signup-container button {
+            width: 20%;
+            padding: 10px;
+            background:#007BFF;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .signup-container button:hover {
+            background: #0056b3;
+        }
+        .signup-container a:hover {
+            background: #0056b3;
+        }
+        a{
+            font-size: 15px;
+            text-decoration: none;
+            background-color:#007BFF;
+            color: white;
+            float: left;
+            padding: 9px;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+    <div class="signup-container">
+        <h2 style="color:  #007bff;"><svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" fill="currentColor" class="bi bi-person-video" viewBox="0 0 16 16">
+            <path d="M8 9.05a2.5 2.5 0 1 0 0-5 2.5 2.5 0 0 0 0 5"/>
+            <path d="M2 2a2 2 0 0 0-2 2v8a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V4a2 2 0 0 0-2-2zm10.798 11c-.453-1.27-1.76-3-4.798-3-3.037 0-4.345 1.73-4.798 3H2a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1h12a1 1 0 0 1 1 1v8a1 1 0 0 1-1 1z"/>
+          </svg>Sign Up</h2>
+        <form action="/FutureMed_AI/Signup" method="post">
+            <input type="text" name="username" placeholder="Username" required><br><br>
+            <input type="email" name="email" placeholder="Email" required><br><br>
+            <input type="tel" name="phone" placeholder="Phone" required><br><br>
+            <input type="password" name="new_password" placeholder="New Password" required><br><br>
+            <input type="password" name="confirm_password" placeholder="Confirm Password" required><br><br>
+            <button type="submit">Sign Up</button>
+        </form>
+        <a href="/FutureMed_AI/login.html">Login</a>
+    </div>
+</body>
+</html>

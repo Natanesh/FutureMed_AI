@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Data Visualization</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.0/chart.umd.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
+    <style>
+        body {
+            background-color: rgb(203, 203, 203);
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin: 20px;
+            color: rgba(255, 255, 255, 0.66);
+        }
+        .chart-container {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            margin-top: 20px;
+        }
+        canvas {
+            max-width: 400px;
+            max-height: 400px;
+        }
+        #contain {
+            border-radius: 20px;
+            color: rgb(255, 255, 255);
+            margin-left: 550px;
+            text-align: center;
+            width: 400px;
+            height: 250px;
+            padding: 30px;
+            background: linear-gradient(135deg, #0f172a, #1e293b);
+        }
+        .custom-file-upload {
+            display: inline-block;
+            padding: 12px 20px;
+            font-size: 16px;
+            font-weight: bold;
+            color: white;
+            background: #007bff;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+        .custom-file-upload:hover {
+            background: #0056b3;
+        }
+        #fileInput {
+            padding: 10px;
+            background-color: #007bff6d;
+            border-radius: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div id="contain">
+        <h1 style="color: #007bff;"> 
+            <svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" fill="currentColor" class="bi bi-display" viewBox="0 0 16 16">
+                <path d="M0 4s0-2 2-2h12s2 0 2 2v6s0 2-2 2h-4q0 1 .25 1.5H11a.5.5 0 0 1 0 1H5a.5.5 0 0 1 0-1h.75Q6 13 6 12H2s-2 0-2-2zm1.398-.855a.76.76 0 0 0-.254.302A1.5.5 0 0 0 1 4.01V10c0 .325.078.502.145.602q.105.156.302.254a1.5.5 0 0 0 .538.143L2.01 11H14c.325 0 .502-.078.602-.145a.76.76 0 0 0 .254-.302 1.5.5 0 0 0 .143-.538L15 9.99V4c0-.325-.078-.502-.145-.602a.76.76 0 0 0-.302-.254A1.5.5 0 0 0 13.99 3H2c-.325 0-.502.078-.602.145"/>
+            </svg>
+            Data Visualization
+        </h1>
+        <label for="fileInput">Upload User Report:</label><br><br>
+        <input type="file" id="fileInput" accept=".csv, .xlsx"><br><br>
+    </div>
+
+    <h2 id="topicTitle" style="color: #ffffff;"></h2> <!-- Topic Display -->
+
+    <div class="chart-container">
+        <canvas id="barChart"></canvas>
+        <canvas id="pieChart"></canvas>
+    </div>
+
+    <script>
+        let barChart, pieChart;
+
+        document.getElementById("fileInput").addEventListener("change", function(event) {
+            let file = event.target.files[0];
+            let reader = new FileReader();
+
+            reader.onload = function(e) {
+                let data = new Uint8Array(e.target.result);
+                let workbook = XLSX.read(data, { type: "array" });
+                let sheetName = workbook.SheetNames[0];
+                let sheet = XLSX.utils.sheet_to_json(workbook.Sheets[sheetName], { header: 1 });
+
+                if (sheet.length < 2) {
+                    alert("CSV is empty or not formatted correctly.");
+                    return;
+                }
+
+                let headers = sheet[0];
+
+                // Extract the topic from the first row, first column
+                let topic = headers[0] || "No Topic Found";
+                document.getElementById("topicTitle").innerText = "Topic: " + topic;
+
+                let monthIndex = headers.findIndex(h => h.toLowerCase().includes("month"));
+                let valueIndex = headers.findIndex(h => h.toLowerCase().includes("percentage"));
+
+                if (monthIndex === -1 || valueIndex === -1) {
+                    alert("CSV must contain 'Month' and 'Percentage' columns.");
+                    return;
+                }
+
+                let labels = [], dataValues = [];
+                for (let i = 1; i < sheet.length; i++) {
+                    if (sheet[i][monthIndex] && sheet[i][valueIndex] !== undefined) {
+                        labels.push(sheet[i][monthIndex]);
+                        dataValues.push(parseFloat(sheet[i][valueIndex]));
+                    }
+                }
+
+                if (labels.length === 0) {
+                    alert("No valid data found.");
+                    return;
+                }
+
+                updateCharts(labels, dataValues);
+            };
+
+            reader.readAsArrayBuffer(file);
+        });
+
+        function updateCharts(labels, dataValues) {
+            if (barChart) barChart.destroy();
+            if (pieChart) pieChart.destroy();
+
+            let barCtx = document.getElementById("barChart").getContext("2d");
+            let pieCtx = document.getElementById("pieChart").getContext("2d");
+
+            barChart = new Chart(barCtx, {
+                type: "bar",
+                data: {
+                    labels: labels,
+                    datasets: [{
+                        label: "Percentage",
+                        data: dataValues,
+                        backgroundColor: "blue",
+                        borderColor: "black",
+                        borderWidth: 1
+                    }]
+                },
+                options: { responsive: true }
+            });
+
+            pieChart = new Chart(pieCtx, {
+                type: "pie",
+                data: {
+                    labels: labels,
+                    datasets: [{
+                        data: dataValues,
+                        backgroundColor: ["red", "blue", "green", "yellow", "purple", "orange"]
+                    }]
+                },
+                options: { responsive: true }
+            });
+        }
+    </script>
+</body>
+</html>

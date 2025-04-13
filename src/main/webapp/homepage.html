@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FutureMed AI - AI-powered Health Assistant</title>
+    <style>
+        * {
+            color: white;
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Arial', sans-serif;
+        }
+        body {
+            background: linear-gradient(135deg, #0f172a, #1e293b);            
+            color: black;
+            text-align: center;
+            padding-bottom: 50px;
+        }
+        header {
+            padding: 20px;
+            font-size: 28px;
+            font-weight: bold;
+            background-color: #007bffa9 ;       }
+        .container {
+            width: 90%;
+            max-width: 1100px;
+            margin: 50px auto;
+        }
+        .feature {
+            background: rgba(255, 255, 255, 0.2);
+            padding: 30px;
+            margin: 20px;
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+            transition: transform 0.3s ease;
+        }
+        .feature:hover {
+            color: white;
+            background-color: #0056b3;
+            transform: scale(1.05);
+        }
+        h1 {
+            font-size: 40px;
+            margin-bottom: 20px;
+        }
+        h2 {
+            font-size: 26px;
+            margin-bottom: 10px;
+        }
+        p {
+            font-size: 18px;
+            margin-bottom: 15px;
+            opacity: 0.9;
+        }
+        button {
+            background: white;
+            color: #007bff;
+            padding: 12px 20px;
+            border: none;
+            font-size: 18px;
+            font-weight: bold;
+            cursor: pointer;
+            border-radius: 5px;
+            transition: background 0.3s ease, transform 0.2s ease;
+        }
+        button:hover {
+            background: #f6f6f65e;
+            color: white;
+            transform: scale(1.05);
+        }
+    </style>
+</head>
+<body>
+
+    <header><svg style="float: left; margin-left:100px " xmlns="http://www.w3.org/2000/svg" width="100" height="100" fill="currentColor" class="bi bi-heart-pulse-fill" viewBox="0 0 16 16">
+        <path d="M1.475 9C2.702 10.84 4.779 12.871 8 15c3.221-2.129 5.298-4.16 6.525-6H12a.5.5 0 0 1-.464-.314l-1.457-3.642-1.598 5.593a.5.5 0 0 1-.945.049L5.889 6.568l-1.473 2.21A.5.5 0 0 1 4 9z"/>
+        <path d="M.88 8C-2.427 1.68 4.41-2 7.823 1.143q.09.083.176.171a3 3 0 0 1 .176-.17C11.59-2 18.426 1.68 15.12 8h-2.783l-1.874-4.686a.5.5 0 0 0-.945.049L7.921 8.956 6.464 5.314a.5.5 0 0 0-.88-.091L3.732 8z"/>
+      </svg>FutureMed AI - AI-powered Health Assistant</header><br><br><br><br><br>
+
+
+
+    <div class="container">
+        <h1>Welcome to FutureMed AI</h1>
+        <p>Your AI-driven medical assistant for predictive healthcare, doctor scheduling, and real-time insights.</p>
+
+        <div class="feature">
+            <h2>🔍 Disease Prediction</h2>
+            <p>AI-powered analysis to detect potential health risks like diabetes, heart disease, and cancer.</p>
+            <button onclick="btn1()">Check Your Health</button>
+        </div>
+        <div class="feature">
+            <h2>💬 AI Chatbot</h2>
+            <p>Instant health guidance, personalized diet tips, and medical recommendations from our AI assistant.</p>
+            <button onclick="btn4()">Chat Now</button>
+        </div>
+
+        <div class="feature">
+            <h2>📅 Doctor Scheduling</h2>
+            <p>Book an appointment with a certified doctor and receive reminders for consultations.</p>
+            <button onclick="btn2()">Schedule Now</button>
+        </div>
+
+        <div class="feature">
+            <h2>📊 Data Visualization</h2>
+            <p>Track your health progress with interactive charts and AI-driven reports.</p>
+            <button onclick="btn3()">View Reports</button>
+        </div>
+
+       
+    </div>
+
+</body>
+<script>
+    function btn1(){
+        window.location.href='/FutureMed_AI/analyse_me.html';
+    }
+    function btn2(){
+        window.location.href='/FutureMed_AI/schedule.html';
+    }
+    function btn3(){
+        window.location.href='/FutureMed_AI/visuaal.html';
+    }
+    function btn4(){
+        window.location.href='/FutureMed_AI/chatBot.html';
+    }
+
+</script>
+</html>

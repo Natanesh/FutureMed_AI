@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Doctor Consulting Scheduling</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: linear-gradient(135deg, #0f172a, #1e293b);            margin: 0;
+            padding: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .container {
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            width: 100%;
+            max-width: 400px;
+            text-align: center;
+        }
+
+        h2 {
+            margin-bottom: 10px;
+            color: #007bff;
+        }
+
+        label {margin-left: 20px;
+            display: block;
+            text-align: left;
+            margin-top: 10px;
+            font-weight: bold;
+        }
+
+        input, select, button {
+            width: 90%;
+            padding: 10px;
+            margin-top: 5px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+
+        button {
+            background-color: #007bff;
+            color: white;
+            cursor: pointer;
+            margin-top: 15px;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+
+        #confirmation, #upload-status {
+            margin-top: 15px;
+            display: none;
+            background-color: #d4edda;
+            color: #155724;
+            padding: 10px;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h2><svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" fill="currentColor" class="bi bi-activity" viewBox="0 0 16 16">
+            <path fill-rule="evenodd" d="M6 2a.5.5 0 0 1 .47.33L10 12.036l1.53-4.208A.5.5 0 0 1 12 7.5h3.5a.5.5 0 0 1 0 1h-3.15l-1.88 5.17a.5.5 0 0 1-.94 0L6 3.964 4.47 8.171A.5.5 0 0 1 4 8.5H.5a.5.5 0 0 1 0-1h3.15l1.88-5.17A.5.5 0 0 1 6 2"/>
+          </svg> Doctor Consulting Scheduling</h2><br>  
+
+        <form id="appointment-form" action="/FutureMed_AI/Appointment" method="post">
+            <label for="name">Patient Name</label>
+            <input type="text" id="name" name="pn" placeholder="Enter your name" required>
+
+            <label for="email">Email</label>
+            <input type="email" id="email" name="email" placeholder="Enter your email" required>
+
+            <label for="phno">Phone</label>
+            <input type="tel" id="phno" name="phno" placeholder="Enter your phone number" required>
+
+            <label for="doctor"> Doctor Name</label>
+            <input type="text" id="DocName" name="dn" placeholder="Enter Doctor Name">
+
+            <label for="demail">Doctor Email</label>
+            <input type="email" id="demail" name="demail" placeholder="Enter your email" required>
+
+            <label for="date">Appointment Date</label>
+            <input type="date" id="date" name="ad" required>
+
+            <label for="time">Appointment Time</label>
+            <input type="time" id="time" name="at" required>
+
+            <button type="submit">📅 Book Appointment</button>
+        </form>
+</body>
+</html>
