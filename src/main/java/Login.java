@@ -20,10 +20,9 @@ public class Login implements Filter{
         out=res.getWriter();
         String email=""+req.getParameter("usr");
         String pass=""+req.getParameter("pass");
-        // String cpass=""+req.getParameter("confirm_password");
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
-            con=DriverManager.getConnection("jdbc:mysql://localhost:3306/details","root","nsnatanesh@2005S");
+            con=DriverManager.getConnection("jdbc:mysql://localhost:3306/details","username","password");
             st=con.createStatement();
             rs=st.executeQuery("select * from login where email='"+email+"';" );
             int f=0;
